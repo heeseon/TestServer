@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="member">
+     
+    <insert id="insertMember" parameterType="hashmap">
+    	<![CDATA[
+	        INSERT INTO TB_MEMBER values(
+	        #{userid}, #{pwd})
+        ]]>
+    </insert>
+    <update id="updateMember" parameterType="hashmap">
+        <![CDATA[    
+	        UPDATE TB_MEMBER SET
+	        pwd = #{pwd}
+	        WHERE userid = #{userid}
+        ]]>	        
+    </update>
+    <delete id="deleteMember" parameterType="String">
+        <![CDATA[	        
+	        DELETE FROM TB_MEMBER WHERE userid = #{userid}
+        ]]>	        
+    </delete>
+    <select id="selectOne" parameterType="String" resultType="hashmap">
+        <![CDATA[    
+	        SELECT * FROM TB_MEMBER WHERE userid = #{userid}
+        ]]>
+    </select>
+    <select id="selectAll" resultType="hashmap">
+        <![CDATA[    
+	        SELECT * FROM TB_MEMBER
+        ]]>
+    </select>
+    
+</mapper>
